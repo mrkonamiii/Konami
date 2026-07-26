@@ -3967,11 +3967,27 @@ function library:dropdown(properties)
 	end
 
 	function cfg:refresh_options(refreshed_list)
+		local previous = {}
+		local had_selection = false
+
+		if cfg.multi then
+			if cfg.multi_items and #cfg.multi_items > 0 then
+				previous = cfg.multi_items
+				had_selection = true
+			end
+		else
+			if flags[cfg.flag] then
+				previous = { flags[cfg.flag] }
+				had_selection = true
+			end
+		end
+
 		for _, v in next, cfg.option_instances do
 			v:Destroy()
 		end
 
 		cfg.option_instances = {}
+		cfg.items = refreshed_list
 		options.CanvasPosition = Vector2.new(0, 0)
 
 		for i, v in next, refreshed_list do
@@ -4030,6 +4046,25 @@ function library:dropdown(properties)
 
 		update_options_size()
 		dropdown.Text = ""
+
+		if had_selection then
+			if cfg.multi then
+				local valid = {}
+				for _, sel in ipairs(previous) do
+					if table.find(refreshed_list, sel) then
+						table.insert(valid, sel)
+					end
+				end
+				cfg.set(valid)
+			else
+				local sel = previous[1]
+				if table.find(refreshed_list, sel) then
+					cfg.set(sel)
+				elseif cfg.default then
+					cfg.set(cfg.default)
+				end
+			end
+		end
 	end
 
 	dropdown.MouseButton1Click:Connect(function()
@@ -5337,8 +5372,8 @@ function library:textbox(properties)
 	end)
 
 	textbox:GetPropertyChangedSignal("Text"):Connect(function()
-		flags[cfg.flag] = textbox.text
-		cfg.callback(textbox.text)
+		flags[cfg.flag] = textbox.Text
+		cfg.callback(textbox.Text)
 	end)
 
 	function cfg.set(text)
