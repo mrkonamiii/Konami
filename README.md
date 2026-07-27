@@ -1,1 +1,1 @@
-Konami is a HVH style cheat for hood copies in roblox. This repository is made to load data externally to fix clutter code.
+Konami is a HVH style cheat for hood copies in roblox. This repository is made to load data externally to fix clutter code, items from this module can be used or edited, but I would appreciate credit.
