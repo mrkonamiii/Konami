@@ -7,4 +7,11 @@ This repository is primarily used to store and load data externally, helping kee
 You're welcome to use, modify, or build upon the resources provided here. If you do, **credit is appreciated**, but not required.
 
 Contributions, suggestions, and improvements are always welcome.
-<img width="504" height="554" alt="image" src="https://github.com/user-attachments/assets/73d22652-0d89-432d-a2dc-5190fe0ccb74" />
+
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/73d22652-0d89-432d-a2dc-5190fe0ccb74"
+    alt="Konami"
+    width="300"
+  />
+</p>
