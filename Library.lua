@@ -4541,13 +4541,13 @@ function library:colorpicker(properties)
 		end
 	end
 
-	function cfg.set(color, alpha)
+	function cfg.set(color, new_alpha)
 		if color then
 			h, s, v = color:ToHSV()
 		end
 
-		if alpha then
-			a = math.clamp(alpha, 0, 1)
+		if new_alpha then
+			a = math.clamp(new_alpha, 0, 1)
 		end
 
 		local Color = hsv(h, s, v)
