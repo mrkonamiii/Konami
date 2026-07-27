@@ -1,3 +1,5 @@
+print('attemping to load konami UI lib.')
+
 local uis = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local ws = game:GetService("Workspace")
