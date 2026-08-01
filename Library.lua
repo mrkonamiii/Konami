@@ -1,5 +1,3 @@
-print('attemping to load konami UI lib.')
-
 local uis = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local ws = game:GetService("Workspace")
@@ -370,16 +368,18 @@ function library:convert_enum(enum)
 end
 
 function library:config_list_update()
+	print('Updating config list...')
 	if not library.config_holder then
 		return
 	end
 
 	local list = {}
 
-	for idx, file in next, listfiles(library.directory .. "/configs") do
-		local name = file.split(file, "/configs/")[2]
-		name = name.split(name, ".cfg")[1]
-		list[#list + 1] = name
+	for _, file in next, listfiles(library.directory .. "/configs") do
+		local name = file:match("([^/\\]+)%.cfg$")
+		if name then
+			list[#list + 1] = name
+		end
 	end
 
 	library.config_holder:refresh_options(list)
