@@ -1,3 +1,5 @@
+print('udp')
+
 local uis = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local ws = game:GetService("Workspace")
