@@ -2344,6 +2344,7 @@ function library:new_keybind(properties)
 
 	function cfg.set_visible(bool)
 		keybind_text.Visible = bool
+		keybind_text.TextColor3 = bool and themes.preset.accent or Color3.fromRGB(170, 170, 170)
 	end
 
 	function cfg.change_text(text)
@@ -4953,6 +4954,10 @@ function library:keybind(properties)
 			cfg.active = __cached
 			flags[cfg.flag]["active"] = __cached
 			cfg.callback(__cached)
+
+			if cfg.keybind_name then
+				key.set_visible(__cached)
+			end
 
 			flags[cfg.flag] = {
 				mode = cfg.mode,
